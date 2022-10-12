@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BiFileFind } from 'react-icons/bi';
 import Box from 'components/Box';
 import FieldInput from 'components/ContactForm/FieldInput';
