@@ -18,13 +18,12 @@ class App extends Component {
     filter: '',
   };
 
-  addContact = name => {
-    this.setState(({ contacts }) => ({ contacts: [...contacts, name] }));
-  };
+  addContact = contact =>
+    this.setState(({ contacts }) => ({ contacts: [...contacts, contact] }));
 
-  checkDuplicate = ({ name: someName }) =>
+  checkDuplicate = newName =>
     this.state.contacts.some(
-      ({ name }) => name.toLowerCase() === someName.toLowerCase()
+      ({ name }) => name.toLowerCase() === newName.toLowerCase()
     );
 
   deleteContact = contactID => () =>
@@ -36,10 +35,10 @@ class App extends Component {
 
   getfilteredContacts = () => {
     const { filter, contacts } = this.state;
-    const normalizedFilter = filter.toLocaleLowerCase();
+    const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
-      name.toLocaleLowerCase().includes(normalizedFilter)
+      name.toLowerCase().includes(normalizedFilter)
     );
   };
 

@@ -1,12 +1,6 @@
-import { AiTwotoneDelete } from 'react-icons/ai';
 import Box from 'components/Box';
-import {
-  Category,
-  CategoryTag,
-  Contact,
-  Info,
-  InfoBtn,
-} from './ContactList.styled';
+import ContactListRow from './ContactListRow';
+import { Category, CategoryTag, Contact } from './ContactList.styled';
 
 const ContactList = ({ contacts, deleteContact }) => {
   return (
@@ -17,15 +11,14 @@ const ContactList = ({ contacts, deleteContact }) => {
         <CategoryTag>Email</CategoryTag>
         <CategoryTag>Delete</CategoryTag>
       </Category>
+
       <Box as="ul" display="flex" flexDirection="column-reverse">
-        {contacts.map(({ id, name, number, email }) => (
-          <Contact key={id}>
-            <Info>{name}</Info>
-            <Info>{number}</Info>
-            <Info>{email}</Info>
-            <InfoBtn type="button" onClick={deleteContact(id)}>
-              <AiTwotoneDelete size={12} />
-            </InfoBtn>
+        {contacts.map(contact => (
+          <Contact key={contact.id}>
+            <ContactListRow
+              contact={contact}
+              deleteContact={deleteContact}
+            ></ContactListRow>
           </Contact>
         ))}
       </Box>
