@@ -1,6 +1,8 @@
-import { Label, Input } from 'components/Filter/Filter.styled';
+import Box from 'components/Box';
+import { Label, Input } from './FieldInput.styled';
 
 const FieldInput = ({
+  children,
   title,
   inputHandler,
   value,
@@ -12,7 +14,15 @@ const FieldInput = ({
 }) => {
   return (
     <Label>
-      <p>{title}</p>
+      <Box
+        as="div"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <p>{title}</p>
+        {children}
+      </Box>
       <Input
         onChange={inputHandler}
         value={value}

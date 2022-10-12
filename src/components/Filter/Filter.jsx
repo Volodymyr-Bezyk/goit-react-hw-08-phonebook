@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import { BiFileFind } from 'react-icons/bi';
-import { Title, TitleText, Label, Input } from './Filter.styled';
 import Box from 'components/Box';
+import FieldInput from 'components/ContactForm/FieldInput';
 
 const Filter = ({ filter, findContact }) => {
   return (
     <Box mt={6}>
-      <Label>
-        <Title>
-          <TitleText>Find contacts</TitleText>
-          <BiFileFind size={40} display="inline-block" />
-        </Title>
-
-        <Input
-          onChange={findContact}
-          value={filter}
-          type="text"
-          name="find"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        />
-      </Label>
+      <FieldInput
+        title="Find contacts"
+        inputHandler={findContact}
+        value={filter}
+        type="text"
+        name="find"
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        hint="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      >
+        <BiFileFind size={40} display="inline-block" />
+      </FieldInput>
     </Box>
   );
 };
