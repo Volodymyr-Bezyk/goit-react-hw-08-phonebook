@@ -18,11 +18,11 @@ const ContactList = ({ contacts, deleteContact }) => {
         <CategoryTag>Delete</CategoryTag>
       </Category>
       <Box as="ul" display="flex" flexDirection="column-reverse">
-        {contacts.map(({ id, name }) => (
+        {contacts.map(({ id, name, number, email }) => (
           <Contact key={id}>
             <Info>{name}</Info>
-            <Info>0666654654</Info>
-            <Info>sdfsdfs@ad.asd</Info>
+            <Info>{number}</Info>
+            <Info>{email}</Info>
             <InfoBtn type="button" onClick={deleteContact(id)}>
               <AiTwotoneDelete size={12} />
             </InfoBtn>
