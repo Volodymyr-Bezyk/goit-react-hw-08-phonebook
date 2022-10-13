@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
+import { ErrorMessage as Error } from 'formik';
 
 export const Label = styled.label`
   display: block;
@@ -7,7 +9,7 @@ export const Label = styled.label`
   font-size: ${p => p.theme.space[3]}px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   padding: ${p => p.theme.space[1]}px;
   outline: none;
   border: none;
@@ -23,4 +25,10 @@ export const Input = styled.input`
   :focus {
     border-bottom-color: ${p => p.theme.colors.primary};
   }
+`;
+
+export const ErrorMessage = styled(Error)`
+  color: ${p => p.theme.colors.error};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes[1]}px;
 `;

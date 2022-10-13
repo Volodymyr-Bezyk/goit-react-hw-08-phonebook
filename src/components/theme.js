@@ -5,6 +5,7 @@ const theme = {
     active: '#F05920',
     transparent: 'transparent',
     primary: '#EE9CF3',
+    error: '#FF8300',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

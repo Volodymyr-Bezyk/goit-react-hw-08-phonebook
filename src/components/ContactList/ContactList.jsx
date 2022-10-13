@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
+
 import Box from 'components/Box';
-import ContactListRow from './ContactListRow';
+import ContactListRow from '../ContactListRow';
 import { Category, CategoryTag, Contact } from './ContactList.styled';
 
 const ContactList = ({ contacts, deleteContact }) => {
@@ -27,3 +29,8 @@ const ContactList = ({ contacts, deleteContact }) => {
 };
 
 export default ContactList;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};

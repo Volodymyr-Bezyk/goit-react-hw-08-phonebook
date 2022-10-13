@@ -1,4 +1,5 @@
 import { AiTwotoneDelete } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 import { Info, InfoBtn } from './ContactListRow.styled';
 
 const ContactListRow = ({
@@ -18,3 +19,12 @@ const ContactListRow = ({
 };
 
 export default ContactListRow;
+
+ContactListRow.propTypes = {
+  contact: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    email: PropTypes.string,
+    id: PropTypes.string.isRequired,
+  }),
+};

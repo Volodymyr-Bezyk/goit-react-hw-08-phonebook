@@ -1,76 +1,47 @@
-import React, { Component } from 'react';
-import { Formik } from 'formik';
-import { nanoid } from 'nanoid';
+import React from 'react';
+import { Formik, Form } from 'formik';
+import PropTypes from 'prop-types';
+
+import { validationSchema } from 'components/validation';
 import { Title, TitleText, AddBtn } from './ContactForm.styled';
 import { RiContactsBook2Line } from 'react-icons/ri';
-import FieldInput from './FieldInput';
+import FieldInput from '../FieldInput';
 
-class ContactForm extends Component {
-  state = { name: '', number: '', email: '' };
-
-  inputHandler = e => {
-    const { name, value } = e.currentTarget;
-    this.setState(prevState => ({ id: nanoid(), ...prevState, [name]: value }));
-  };
-
-  onFormSubmit = e => {
-    e.preventDefault();
-    const duplicateName = this.props.checkContact(this.state.name);
-
-    if (duplicateName) {
-      alert(`${this.state.name} is already in contacts!`);
+const ContactForm = ({ addContact, checkContact }) => {
+  const handleSubmit = (contact, { resetForm }) => {
+    if (checkContact(contact)) {
+      alert(`${contact.name} is already in contacts!`);
     } else {
-      this.props.addContact(this.state);
-      this.setState({ name: '', number: '', email: '' });
+      addContact(contact);
+      resetForm();
     }
   };
 
-  render() {
-    return (
-      <Formik>
-        <form onSubmit={this.onFormSubmit}>
-          <Title>
-            <TitleText>Phone Book</TitleText>
-            <RiContactsBook2Line size={40} display="inline-block" />
-          </Title>
+  return (
+    <Formik
+      initialValues={{ name: '', number: '', email: '' }}
+      onSubmit={handleSubmit}
+      validationSchema={validationSchema}
+    >
+      <Form>
+        <Title>
+          <TitleText>Phone Book</TitleText>
+          <RiContactsBook2Line size={40} display="inline-block" />
+        </Title>
 
-          <FieldInput
-            title="Name"
-            inputHandler={this.inputHandler}
-            value={this.state.name}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            hint="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          ></FieldInput>
+        <FieldInput title="Name" type="text" name="name"></FieldInput>
+        <FieldInput title="Phone" type="tel" name="number"></FieldInput>
+        <FieldInput title="Email" type="mail" name="email"></FieldInput>
 
-          <FieldInput
-            title="Phone"
-            inputHandler={this.inputHandler}
-            value={this.state.number}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            hint="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          ></FieldInput>
-
-          <FieldInput
-            title="Email"
-            inputHandler={this.inputHandler}
-            value={this.state.email}
-            type="mail"
-            name="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            hint="Please type correct email"
-          ></FieldInput>
-
-          <AddBtn type="submit">Add contact</AddBtn>
-        </form>
-      </Formik>
-    );
-  }
-}
+        <AddBtn type="submit">Add contact</AddBtn>
+      </Form>
+    </Formik>
+  );
+};
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  checkContact: PropTypes.func.isRequired,
+};
