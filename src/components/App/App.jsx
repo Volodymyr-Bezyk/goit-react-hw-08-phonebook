@@ -6,13 +6,35 @@ import Box from 'components/Box';
 import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
 import Filter from 'components/Filter';
-import data from '../data';
+import { LS_KEY } from 'components/constants';
+
 class App extends Component {
   state = {
-    contacts: [...data],
-
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    try {
+      const data = localStorage.getItem(LS_KEY);
+      const parsedContacts = JSON.parse(data);
+      if (parsedContacts && parsedContacts.length > 0) {
+        this.setState({ contacts: [...parsedContacts] });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  componentDidUpdate(pP, pS) {
+    const { contacts } = this.state;
+    if (pS.contacts.length !== contacts.length) {
+      try {
+        localStorage.setItem(LS_KEY, JSON.stringify(contacts));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   addContact = contact =>
     this.setState(({ contacts }) => ({
