@@ -19,9 +19,9 @@ const Filter = ({ filter, findContact }) => {
         </Box>
         <Input
           onChange={findContact}
-          value={filter}
           type="text"
           name="filter"
+          value={filter}
         />
       </Label>
     </Box>
