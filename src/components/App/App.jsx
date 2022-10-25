@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import toast, { Toaster } from 'react-hot-toast';
 import { Wrapper } from './App.styled';
 import Box from 'components/Box';
 import ContactForm from '../ContactForm';
@@ -17,10 +18,12 @@ const App = () => {
   const checkDuplicate = ({ name: newName }) =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());
 
-  const deleteContact = contactID => () =>
+  const deleteContact = contactID => () => {
     setContacts(prevContacts =>
       prevContacts.filter(contact => contact.id !== contactID)
     );
+    toast.success('Contact deleted');
+  };
 
   return (
     <Wrapper>
@@ -31,6 +34,7 @@ const App = () => {
         ></ContactForm>
         <Filter filter={filter} findContact={changeFilter}></Filter>
       </Box>
+      <Toaster position="top-right" reverseOrder={false} />
       <ContactList
         contacts={filteredContacts}
         deleteContact={deleteContact}
