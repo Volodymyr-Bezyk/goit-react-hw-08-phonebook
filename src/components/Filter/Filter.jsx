@@ -1,18 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BiFileFind } from 'react-icons/bi';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Box from 'components/Box';
 import { Label, Input, Title } from './Filter.styled';
-import { useSelector } from 'react-redux';
 import { getFilter } from 'redux/selectors';
-import { useDispatch } from 'react-redux';
-import { setNameFilter } from 'redux/actions';
+import { setFilterValue } from 'redux/filterSlice';
 
 const Filter = () => {
-  const { value } = useSelector(getFilter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const onFilterChange = e => dispatch(setNameFilter(e.target.value));
+  const onFilterChange = e => dispatch(setFilterValue(e.target.value));
 
   return (
     <Box mt={6}>
@@ -28,7 +27,7 @@ const Filter = () => {
         </Box>
         <Input
           onChange={onFilterChange}
-          value={value}
+          value={filter}
           type="text"
           name="filter"
         />
@@ -38,8 +37,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-// Filter.propTypes = {
-//   filter: PropTypes.string.isRequired,
-//   findContact: PropTypes.func.isRequired,
-// };

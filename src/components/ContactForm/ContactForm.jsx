@@ -1,19 +1,16 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-// import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
+import { RiContactsBook2Line } from 'react-icons/ri';
 
 import { validationSchema } from 'components/validation';
 import { Title, TitleText, AddBtn } from './ContactForm.styled';
-import { RiContactsBook2Line } from 'react-icons/ri';
 import FieldInput from '../FieldInput';
-
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
-import { useSelector } from 'react-redux';
 
-const ContactForm = ({ checkContact }) => {
+const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
@@ -44,9 +41,9 @@ const ContactForm = ({ checkContact }) => {
           <TitleText>Phone Book</TitleText>
           <RiContactsBook2Line size={40} display="inline-block" />
         </Title>
-        <FieldInput title="Name" type="text" name="name"></FieldInput>
-        <FieldInput title="Phone" type="tel" name="number"></FieldInput>
-        <FieldInput title="Email" type="mail" name="email"></FieldInput>
+        <FieldInput title="Name" type="text" name="name" />
+        <FieldInput title="Phone" type="tel" name="number" />
+        <FieldInput title="Email" type="mail" name="email" />
         <AddBtn type="submit">Add contact</AddBtn>
       </Form>
     </Formik>
@@ -54,8 +51,3 @@ const ContactForm = ({ checkContact }) => {
 };
 
 export default ContactForm;
-
-// ContactForm.propTypes = {
-//   addContact: PropTypes.func.isRequired,
-//   checkContact: PropTypes.func.isRequired,
-// };
