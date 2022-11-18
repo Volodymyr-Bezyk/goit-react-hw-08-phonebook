@@ -2,9 +2,10 @@ import { AiTwotoneDelete } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Info, InfoBtn } from './ContactListRow.styled';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
-const ContactListRow = ({ contact: { name, number, email, id } }) => {
+const ContactListRow = ({ contact }) => {
+  const { name, number, email, id } = contact;
   const dispatch = useDispatch();
   const onDeleteClick = () => dispatch(deleteContact(id));
 

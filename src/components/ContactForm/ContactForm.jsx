@@ -7,12 +7,12 @@ import { RiContactsBook2Line } from 'react-icons/ri';
 import { validationSchema } from 'components/validation';
 import { Title, TitleText, AddBtn } from './ContactForm.styled';
 import FieldInput from '../FieldInput';
-import { addContact } from 'redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const checkDuplicate = ({ name: newName }) =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());

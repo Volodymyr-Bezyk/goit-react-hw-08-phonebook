@@ -8,7 +8,7 @@ export const Label = styled.label`
 `;
 
 export const Title = styled.p`
-  font-size: ${p => p.theme.fontSizes[4]}px;
+  font-size: ${p => p.theme.fontSizes[7]}px;
 `;
 
 export const Input = styled.input`

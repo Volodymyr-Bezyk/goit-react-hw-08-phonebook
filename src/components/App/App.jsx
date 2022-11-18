@@ -7,16 +7,16 @@ import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
 import Filter from 'components/Filter';
 import { fetchContacts } from 'redux/operations';
-import { getLoadingSattus, getError } from 'redux/selectors';
+import { selectLoadingSattus, selectError } from 'redux/selectors';
 
 const App = () => {
-  const error = useSelector(getError);
-  const isloading = useSelector(getLoadingSattus);
+  const error = useSelector(selectError);
+  const isloading = useSelector(selectLoadingSattus);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const controller = new AbortController();
-    dispatch(fetchContacts(controller));
+    dispatch(fetchContacts());
     return () => {
       controller.abort();
     };
@@ -29,6 +29,7 @@ const App = () => {
         <Filter />
       </Box>
       <Toaster position="top-right" reverseOrder={false} />
+      {isloading && !error && <div>Loading...</div>}
       <ContactList />
     </Wrapper>
   );

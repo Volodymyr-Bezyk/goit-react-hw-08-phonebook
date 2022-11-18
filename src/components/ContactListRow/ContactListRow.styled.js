@@ -70,15 +70,20 @@ export const InfoBtn = styled.button`
     }
   }
   @media screen and (min-width: 768px) {
-    flex-basis: 40px;
+    padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
 
     svg {
       margin-right: auto;
       width: 12px;
       height: 12px;
     }
-    @media screen and (min-width: 768px) {
-      padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
+  }
+  @media screen and (min-width: 1500px) {
+    padding: ${p => p.theme.space[1]}px ${p => p.theme.space[4]}px;
+    svg {
+      margin-right: auto;
+      width: 15px;
+      height: 15px;
     }
   }
 `;

@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Box from 'components/Box';
 import { Label, Input, Title } from './Filter.styled';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 import { setFilterValue } from 'redux/filterSlice';
 
 const Filter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const onFilterChange = e => dispatch(setFilterValue(e.target.value));

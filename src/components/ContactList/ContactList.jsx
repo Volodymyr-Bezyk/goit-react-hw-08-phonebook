@@ -1,24 +1,14 @@
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/selectors';
 import Box from 'components/Box';
 import ContactListRow from '../ContactListRow';
 import { Category, CategoryTag, Contact } from './ContactList.styled';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-
-  const getVisibleContacts = (contacts, filter) => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-
-  const filteredContacts = getVisibleContacts(contacts, filter);
+  const filteredContacts = useSelector(selectVisibleContacts);
 
   return (
-    <Box width="70%" p={4} maxWidth={1100}>
+    <Box width="70%" p={4} maxWidth={1200}>
       <Category>
         <CategoryTag>Name</CategoryTag>
         <CategoryTag>Phone</CategoryTag>
