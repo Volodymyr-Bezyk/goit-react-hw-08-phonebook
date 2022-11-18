@@ -18,7 +18,7 @@ const ContactList = () => {
   const filteredContacts = getVisibleContacts(contacts, filter);
 
   return (
-    <Box width="70%" p={5}>
+    <Box width="70%" p={4} maxWidth={1100}>
       <Category>
         <CategoryTag>Name</CategoryTag>
         <CategoryTag>Phone</CategoryTag>

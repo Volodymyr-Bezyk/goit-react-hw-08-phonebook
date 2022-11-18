@@ -39,7 +39,7 @@ const ContactForm = () => {
       <Form>
         <Title>
           <TitleText>Phone Book</TitleText>
-          <RiContactsBook2Line size={40} display="inline-block" />
+          <RiContactsBook2Line size={40} display="inline-block" ml={20} />
         </Title>
         <FieldInput title="Name" type="text" name="name" />
         <FieldInput title="Phone" type="tel" name="number" />

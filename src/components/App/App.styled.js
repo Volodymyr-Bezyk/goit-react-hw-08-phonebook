@@ -3,9 +3,21 @@ import bg from 'img/abstract-grunge-decorative-relief-navy-blue-stucco-wall-text
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
   background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: ${p => p.theme.sizes.h.full};
+
+  svg {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    svg {
+      display: block;
+      margin-left: auto;
+    }
+  }
 `;

@@ -6,10 +6,11 @@ const theme = {
     transparent: 'transparent',
     primary: '#EE9CF3',
     error: '#FF8300',
+    accent: '#3AF807 ',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [8, 10, 12, 14, 16, 20, 24, 32, 48, 64, 72],
   sizes: {
     w: { full: '100vw', max: '100%' },
     h: { full: '100vh' },
@@ -24,6 +25,7 @@ const theme = {
 
   fontWeights: {
     body: 400,
+    medium: 500,
     bold: 700,
     heading: 700,
   },
