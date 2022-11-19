@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Info, InfoBtn } from './ContactListRow.styled';
 import { deleteContact } from 'redux/operations';
+import Checkbox from 'components/Checkbox';
 
 const ContactListRow = ({ contact }) => {
   const { name, number, email, id } = contact;
@@ -11,6 +12,7 @@ const ContactListRow = ({ contact }) => {
 
   return (
     <>
+      <Checkbox />
       <Info>{name}</Info>
       <Info>{number}</Info>
       <Info>{email}</Info>

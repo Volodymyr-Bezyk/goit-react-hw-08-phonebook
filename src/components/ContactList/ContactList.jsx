@@ -1,14 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 import { selectVisibleContacts } from 'redux/selectors';
-import Box from 'components/Box';
-import ContactListRow from '../ContactListRow';
-import { Category, CategoryTag, Contact } from './ContactList.styled';
+import { Category, CategoryTag } from './ContactList.styled';
+import { selectLoadingSattus, selectError } from 'redux/selectors';
+import PaginatedContacts from 'components/PaginatedContacts';
 
 const ContactList = () => {
+  const error = useSelector(selectError);
+  const isloading = useSelector(selectLoadingSattus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+    return () => {};
+  }, [dispatch]);
+
   const filteredContacts = useSelector(selectVisibleContacts);
 
   return (
-    <Box width="70%" p={4} maxWidth={1200}>
+    <>
       <Category>
         <CategoryTag>Name</CategoryTag>
         <CategoryTag>Phone</CategoryTag>
@@ -16,14 +27,10 @@ const ContactList = () => {
         <CategoryTag>Delete</CategoryTag>
       </Category>
 
-      <Box as="ul" display="flex" flexDirection="column-reverse">
-        {filteredContacts.map(contact => (
-          <Contact key={contact.id}>
-            <ContactListRow contact={contact} />
-          </Contact>
-        ))}
-      </Box>
-    </Box>
+      {isloading && !error && <div>Loading...</div>}
+      {error && <div>Error</div>}
+      <PaginatedContacts filteredContacts={filteredContacts} />
+    </>
   );
 };
 

@@ -6,7 +6,11 @@ export const Label = styled.label`
   display: block;
   margin-bottom: ${p => p.theme.space[2]}px;
   color: ${p => p.theme.colors.text};
-  font-size: ${p => p.theme.space[3]}px;
+  font-size: ${p => p.theme.fontSizes[4]}px;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${p => p.theme.fontSizes[5]}px;
+  }
 `;
 
 export const Input = styled(Field)`

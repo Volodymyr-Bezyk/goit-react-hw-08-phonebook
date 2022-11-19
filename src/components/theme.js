@@ -6,7 +6,10 @@ const theme = {
     transparent: 'transparent',
     primary: '#EE9CF3',
     error: '#FF8300',
-    accent: '#3AF807 ',
+    accent: '#82063E ',
+    paginationBg: '#A6F5F6',
+    additionalPagColor: '#75B8F7',
+    disabled: '#B4B5B6',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

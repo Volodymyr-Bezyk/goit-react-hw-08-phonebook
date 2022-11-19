@@ -1,27 +1,12 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { Wrapper } from './App.styled';
 import Box from 'components/Box';
 import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
 import Filter from 'components/Filter';
-import { fetchContacts } from 'redux/operations';
-import { selectLoadingSattus, selectError } from 'redux/selectors';
+import AppBar from 'components/AppBar';
 
 const App = () => {
-  const error = useSelector(selectError);
-  const isloading = useSelector(selectLoadingSattus);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const controller = new AbortController();
-    dispatch(fetchContacts());
-    return () => {
-      controller.abort();
-    };
-  }, [dispatch]);
-
   return (
     <Wrapper>
       <Box minWidth="15%" maxWidth="25%" p={4}>
@@ -29,8 +14,10 @@ const App = () => {
         <Filter />
       </Box>
       <Toaster position="top-right" reverseOrder={false} />
-      {isloading && !error && <div>Loading...</div>}
-      <ContactList />
+      <Box width="70%" p={4} maxWidth={1200}>
+        <AppBar />
+        <ContactList />
+      </Box>
     </Wrapper>
   );
 };
