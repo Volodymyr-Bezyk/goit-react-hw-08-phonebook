@@ -1,10 +1,10 @@
 import { FiStar } from 'react-icons/fi';
 import { CheckboxLabel, HideInput } from './Checkbox.styled';
 
-const CheckBox = () => {
+const CheckBox = ({ onToggleClick, status }) => {
   return (
     <CheckboxLabel>
-      <HideInput type="checkbox" />
+      <HideInput onChange={onToggleClick} checked={status} type="checkbox" />
       <FiStar size={20} />
     </CheckboxLabel>
   );

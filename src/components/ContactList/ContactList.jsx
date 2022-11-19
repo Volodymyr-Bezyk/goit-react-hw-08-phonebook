@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Category, CategoryTag } from './ContactList.styled';
-import { selectLoadingSattus, selectError } from 'redux/selectors';
+import { selectLoadingStatus, selectError } from 'redux/selectors';
 import PaginatedContacts from 'components/PaginatedContacts';
 
 const ContactList = () => {
   const error = useSelector(selectError);
-  const isloading = useSelector(selectLoadingSattus);
+  const isloading = useSelector(selectLoadingStatus);
 
   return (
     <>

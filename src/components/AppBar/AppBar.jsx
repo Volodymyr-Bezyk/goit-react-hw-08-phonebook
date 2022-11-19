@@ -26,7 +26,7 @@ const AppBar = () => {
           onClick={() => dispatch(setActiveStatusValue(filterStatus.favourite))}
           type="button"
         >
-          Favourtie
+          Favourite
         </FilterBtn>
         <FilterBtn
           selected={currentStatus === filterStatus.all}
