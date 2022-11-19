@@ -19,7 +19,10 @@ export const FilterBtn = styled.button`
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes[3]}px;
   border-radius: ${p => p.theme.radii.med};
-  background-color: ${p => p.theme.colors.accent};
+  /* background-color: ${p => p.theme.colors.accent}; */
+  background-color: ${p =>
+    p.selected ? p.theme.colors.active : p.theme.colors.accent};
+
   border: ${p => p.theme.borders.none};
   cursor: pointer;
   transition: background-color 300ms ease-in-out;

@@ -31,5 +31,6 @@ ContactListRow.propTypes = {
     number: PropTypes.string.isRequired,
     email: PropTypes.string,
     id: PropTypes.string.isRequired,
+    status: PropTypes.bool.isRequired,
   }),
 };

@@ -29,6 +29,7 @@ const ContactList = () => {
 
       {isloading && !error && <div>Loading...</div>}
       {error && <div>Error</div>}
+
       <PaginatedContacts filteredContacts={filteredContacts} />
     </>
   );
