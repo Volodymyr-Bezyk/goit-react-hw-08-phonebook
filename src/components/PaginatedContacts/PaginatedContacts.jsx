@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Box from 'components/Box';
 import { Contact } from 'components/ContactList/ContactList.styled';
 import ContactListRow from 'components/ContactListRow';
 import { StyledPaginatedContacts } from './PaginatedContacts.styled';
 
-const PaginatedContacts = ({ filteredContacts }) => {
+import { selectVisibleContacts } from 'redux/selectors';
+
+const PaginatedContacts = () => {
+  const filteredContacts = useSelector(selectVisibleContacts);
+
   const itemsPerPage = 20;
   const [itemOffset, setItemOffset] = useState(0);
 

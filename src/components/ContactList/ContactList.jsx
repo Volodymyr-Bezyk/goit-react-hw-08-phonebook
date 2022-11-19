@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectVisibleContacts } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 import { Category, CategoryTag } from './ContactList.styled';
 import { selectLoadingSattus, selectError } from 'redux/selectors';
 import PaginatedContacts from 'components/PaginatedContacts';
@@ -9,14 +6,6 @@ import PaginatedContacts from 'components/PaginatedContacts';
 const ContactList = () => {
   const error = useSelector(selectError);
   const isloading = useSelector(selectLoadingSattus);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-    return () => {};
-  }, [dispatch]);
-
-  const filteredContacts = useSelector(selectVisibleContacts);
 
   return (
     <>
@@ -30,7 +19,7 @@ const ContactList = () => {
       {isloading && !error && <div>Loading...</div>}
       {error && <div>Error</div>}
 
-      <PaginatedContacts filteredContacts={filteredContacts} />
+      <PaginatedContacts />
     </>
   );
 };

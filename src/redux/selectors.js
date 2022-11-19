@@ -15,3 +15,19 @@ export const selectVisibleContacts = createSelector(
     );
   }
 );
+
+export const selectCountedContacts = createSelector(
+  [selectContacts],
+  contacts => {
+    return contacts.reduce(
+      (acc, contact) => {
+        const counter = { ...acc, all: acc.all + 1 };
+        if (contact.status) {
+          counter.favourites += 1;
+        }
+        return counter;
+      },
+      { all: 0, favourites: 0 }
+    );
+  }
+);

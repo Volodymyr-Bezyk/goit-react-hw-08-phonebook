@@ -3,19 +3,21 @@ import { AppBarWrap, FilterBtn, InfoText } from './AppBar.styled';
 import { filterStatus } from 'redux/constants';
 import { selectActiveStatus } from 'redux/selectors';
 import { setActiveStatusValue } from 'redux/activeStatusSlice';
+import { selectCountedContacts } from 'redux/selectors';
 
 const AppBar = () => {
   const currentStatus = useSelector(selectActiveStatus);
   const dispatch = useDispatch();
+  const counter = useSelector(selectCountedContacts);
 
   return (
     <AppBarWrap>
       <div>
         <InfoText>
-          Total in contacts: <span> </span>
+          Total in contacts: <span> {counter.all} </span>
         </InfoText>
         <InfoText>
-          Saved in favourites: <span></span>
+          Saved in favourites: <span> {counter.favourites} </span>
         </InfoText>
       </div>
       <div>
