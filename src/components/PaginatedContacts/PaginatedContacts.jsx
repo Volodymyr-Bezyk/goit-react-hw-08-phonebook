@@ -4,21 +4,24 @@ import Box from 'components/Box';
 import { Contact } from 'components/ContactList/ContactList.styled';
 import ContactListRow from 'components/ContactListRow';
 import { StyledPaginatedContacts } from './PaginatedContacts.styled';
-import { selectVisibleContacts } from 'redux/selectors';
-import { selectActiveStatus } from 'redux/selectors';
+import {
+  selectVisibleContacts,
+  selectActiveStatus,
+  selectFilter,
+} from 'redux/selectors';
 import { filterStatus } from 'redux/constants';
 
 const PaginatedContacts = () => {
   const filteredContacts = useSelector(selectVisibleContacts);
   const [itemOffset, setItemOffset] = useState(0);
-
   const status = useSelector(selectActiveStatus);
+  const filter = useSelector(selectFilter);
 
   useEffect(() => {
-    if (status === filterStatus.favourite) {
+    if (status === filterStatus.favourite || filter.length > 0) {
       setItemOffset(0);
     }
-  }, [status]);
+  }, [status, filter]);
 
   const itemsPerPage = 20;
   const endOffset = itemOffset + itemsPerPage;

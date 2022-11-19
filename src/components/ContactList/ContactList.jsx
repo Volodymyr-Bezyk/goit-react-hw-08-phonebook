@@ -17,9 +17,8 @@ const ContactList = () => {
       </Category>
 
       {isloading && !error && <div>Loading...</div>}
-      {error && <div>Error</div>}
-
-      <PaginatedContacts />
+      {error && <div>{error}. Please reload the page</div>}
+      {!error && <PaginatedContacts />}
     </>
   );
 };
