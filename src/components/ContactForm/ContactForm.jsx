@@ -25,8 +25,9 @@ const ContactForm = () => {
       alert(`${contact.name} is already in contacts!`);
       return;
     }
-    toast.success('Contact added successfully');
+
     dispatch(addContact(contact));
+
     resetForm();
   };
 

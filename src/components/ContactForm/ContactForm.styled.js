@@ -17,7 +17,7 @@ export const AddBtn = styled.button`
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
   color: ${p => p.theme.colors.textBlack};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes[0]}px;
+  font-size: ${p => p.theme.fontSizes[1]}px;
   border-radius: ${p => p.theme.radii.min};
   background-color: ${p => p.theme.colors.primary};
   border: ${p => p.theme.borders.none};
@@ -29,6 +29,6 @@ export const AddBtn = styled.button`
   }
 
   @media screen and (min-width: 480px) {
-    font-size: ${p => p.theme.fontSizes[1]}px;
+    font-size: ${p => p.theme.fontSizes[2]}px;
   }
 `;

@@ -8,14 +8,17 @@ import {
   selectVisibleContacts,
   selectActiveStatus,
   selectFilter,
+  selectError,
 } from 'redux/selectors';
 import { filterStatus } from 'redux/constants';
+import Error from 'components/Error';
 
 const PaginatedContacts = () => {
   const filteredContacts = useSelector(selectVisibleContacts);
   const [itemOffset, setItemOffset] = useState(0);
   const status = useSelector(selectActiveStatus);
   const filter = useSelector(selectFilter);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     if (status === filterStatus.favourite || filter.length > 0) {
@@ -35,22 +38,27 @@ const PaginatedContacts = () => {
 
   return (
     <>
-      <Box as="ul" display="flex" flexDirection="column-reverse">
-        {currentItems.map(contact => (
-          <Contact key={contact.id}>
-            <ContactListRow contact={contact} />
-          </Contact>
-        ))}
-      </Box>
-      <StyledPaginatedContacts
-        breakLabel="..."
-        nextLabel="next>"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={pageCount}
-        previousLabel="<prev"
-        renderOnZeroPageCount={null}
-      />
+      {error && <Error />}
+      {!error && (
+        <Box as="ul" display="flex" flexDirection="column-reverse">
+          {currentItems.map(contact => (
+            <Contact key={contact.id}>
+              <ContactListRow contact={contact} />
+            </Contact>
+          ))}
+        </Box>
+      )}
+      {!error && (
+        <StyledPaginatedContacts
+          breakLabel="..."
+          nextLabel=">>"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="<<"
+          renderOnZeroPageCount={null}
+        />
+      )}
     </>
   );
 };

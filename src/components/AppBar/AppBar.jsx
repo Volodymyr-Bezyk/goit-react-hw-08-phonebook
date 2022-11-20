@@ -1,7 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { BarLoader } from 'react-spinners';
 import { AppBarWrap, FilterBtn, InfoText } from './AppBar.styled';
 import { filterStatus } from 'redux/constants';
-import { selectActiveStatus } from 'redux/selectors';
+import {
+  selectActiveStatus,
+  selectError,
+  selectLoadingStatus,
+} from 'redux/selectors';
 import { setActiveStatusValue } from 'redux/activeStatusSlice';
 import { selectCountedContacts } from 'redux/selectors';
 
@@ -9,6 +14,8 @@ const AppBar = () => {
   const currentStatus = useSelector(selectActiveStatus);
   const dispatch = useDispatch();
   const counter = useSelector(selectCountedContacts);
+  const isloading = useSelector(selectLoadingStatus);
+  const error = useSelector(selectError);
 
   return (
     <AppBarWrap>
@@ -20,6 +27,7 @@ const AppBar = () => {
           Saved in favourites: <span> {counter.favourites} </span>
         </InfoText>
       </div>
+
       <div>
         <FilterBtn
           selected={currentStatus === filterStatus.favourite}
@@ -35,6 +43,18 @@ const AppBar = () => {
         >
           All
         </FilterBtn>
+        {isloading && !error && (
+          <BarLoader
+            cssOverride={{
+              padding: '2px',
+              marginTop: '5px',
+              borderRadius: '4px',
+            }}
+            height={10}
+            width="100%"
+            color="#36d7b7"
+          />
+        )}
       </div>
     </AppBarWrap>
   );

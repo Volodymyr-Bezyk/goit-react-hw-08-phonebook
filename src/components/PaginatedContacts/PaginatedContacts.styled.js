@@ -24,8 +24,6 @@ export const StyledPaginatedContacts = styled(ReactPaginate)`
     background-color: ${p => p.theme.colors.paginationBg};
     cursor: pointer;
     transition: background-color 250ms ease-in;
-    /* padding: ${p => p.theme.space[1]}px ${p => p.theme.space[1]}px;
-    font-size: ${p => p.theme.fontSizes[1]}px; */
 
     @media screen and (min-width: 320px) {
       padding: ${p => p.theme.space[1]}px ${p => p.theme.space[1]}px;
