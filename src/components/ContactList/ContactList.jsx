@@ -12,7 +12,6 @@ const ContactList = () => {
         <CategoryTag>Delete</CategoryTag>
       </Category>
 
-      {/* {error && <div>{error}. Please reload the page</div>} */}
       {<PaginatedContacts />}
     </>
   );

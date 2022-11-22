@@ -34,5 +34,5 @@ export const Input = styled(Field)`
 export const ErrorMessage = styled(Error)`
   color: ${p => p.theme.colors.error};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-size: ${p => p.theme.fontSizes[3]}px;
 `;

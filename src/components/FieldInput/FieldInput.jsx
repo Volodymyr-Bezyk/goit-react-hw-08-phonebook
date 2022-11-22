@@ -5,12 +5,7 @@ import { Label, Input, ErrorMessage } from './FieldInput.styled';
 const FieldInput = ({ title, type, name }) => {
   return (
     <Label>
-      <Box
-        as="div"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
+      <Box as="div" display="flex" alignItems="center" justifyContent="space-between">
         <p>{title}</p>
       </Box>
       <Input type={type} name={name} />

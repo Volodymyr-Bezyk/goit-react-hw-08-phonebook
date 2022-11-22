@@ -10,20 +10,20 @@ import {
   selectFilter,
   selectError,
 } from 'redux/selectors';
-import { filterStatus } from 'redux/constants';
 import Error from 'components/Error';
 
 const PaginatedContacts = () => {
   const filteredContacts = useSelector(selectVisibleContacts);
   const [itemOffset, setItemOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const status = useSelector(selectActiveStatus);
   const filter = useSelector(selectFilter);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    if (status === filterStatus.favourite || filter.length > 0) {
-      setItemOffset(0);
-    }
+    setItemOffset(0);
+    setCurrentPage(0);
   }, [status, filter]);
 
   const itemsPerPage = 20;
@@ -34,12 +34,13 @@ const PaginatedContacts = () => {
   const handlePageClick = event => {
     const newOffset = (event.selected * itemsPerPage) % filteredContacts.length;
     setItemOffset(newOffset);
+    setCurrentPage(event.selected);
   };
 
   return (
     <>
       {error && <Error />}
-      {!error && (
+      {!error && currentItems.length > 0 && (
         <Box as="ul" display="flex" flexDirection="column-reverse">
           {currentItems.map(contact => (
             <Contact key={contact.id}>
@@ -48,7 +49,7 @@ const PaginatedContacts = () => {
           ))}
         </Box>
       )}
-      {!error && (
+      {!error && currentItems.length > 0 && (
         <StyledPaginatedContacts
           breakLabel="..."
           nextLabel=">>"
@@ -57,6 +58,9 @@ const PaginatedContacts = () => {
           pageCount={pageCount}
           previousLabel="<<"
           renderOnZeroPageCount={null}
+          className={'paginate'}
+          pageClassName={'pagItem'}
+          initialPage={currentPage}
         />
       )}
     </>

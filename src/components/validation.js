@@ -6,6 +6,6 @@ Yup.addMethod(Yup.string, 'numbers', function () {
 
 export const validationSchema = Yup.object({
   name: Yup.string().min(3).required(),
-  number: Yup.string().min(6).numbers().required(),
+  number: Yup.string().length(10).numbers().required(),
   email: Yup.string().email(),
 });

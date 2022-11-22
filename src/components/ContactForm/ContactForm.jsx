@@ -3,16 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import toast from 'react-hot-toast';
 import { RiContactsBook2Line } from 'react-icons/ri';
-
 import { validationSchema } from 'components/validation';
 import { Title, TitleText, AddBtn } from './ContactForm.styled';
 import FieldInput from '../FieldInput';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { operations, selectors } from 'redux/index';
+import { phoneNumberFormatter } from 'helpers';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectors.selectContacts);
 
   const checkDuplicate = ({ name: newName }) =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());
@@ -25,8 +24,11 @@ const ContactForm = () => {
       alert(`${contact.name} is already in contacts!`);
       return;
     }
-
-    dispatch(addContact(contact));
+    const formattedContact = {
+      ...contact,
+      number: phoneNumberFormatter(contact.number),
+    };
+    dispatch(operations.addContact(formattedContact));
 
     resetForm();
   };

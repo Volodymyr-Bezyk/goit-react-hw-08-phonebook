@@ -1,23 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-  toggleFavourite,
-} from './operations';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact, toggleFavourite } from './operations';
 
-const handlePending = state => {
-  state.isLoading = true;
-};
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+import * as reducers from './reducers';
 
-const handleFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-};
+const extraActions = [fetchContacts, addContact, deleteContact, toggleFavourite];
+
+const getActions = type => extraActions.map(action => action[type]);
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -27,43 +15,15 @@ const contactsSlice = createSlice({
     error: null,
   },
 
-  extraReducers: {
-    [fetchContacts.pending]: handlePending,
-    [addContact.pending]: handlePending,
-    [deleteContact.pending]: handlePending,
-    [toggleFavourite.pending]: handlePending,
-
-    [fetchContacts.rejected]: handleRejected,
-    [addContact.rejected]: handleRejected,
-    [deleteContact.rejected]: handleRejected,
-    [toggleFavourite.rejected]: handleRejected,
-
-    [fetchContacts.fulfilled](state, action) {
-      handleFulfilled(state, action);
-      state.items = action.payload;
-    },
-
-    [addContact.fulfilled](state, action) {
-      handleFulfilled(state, action);
-      state.items.unshift(action.payload);
-    },
-
-    [deleteContact.fulfilled](state, action) {
-      handleFulfilled(state, action);
-      const index = state.items.findIndex(
-        item => item.id === action.payload.id
-      );
-      state.items.splice(index, 1);
-    },
-
-    [toggleFavourite.fulfilled](state, action) {
-      handleFulfilled(state, action);
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.items.splice(index, 1, action.payload);
-    },
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(fetchContacts.fulfilled, reducers.fetchContactsSuccessReducer)
+      .addCase(addContact.fulfilled, reducers.addContactSuccessReducer)
+      .addCase(deleteContact.fulfilled, reducers.deleteContactSuccessReducer)
+      .addCase(toggleFavourite.fulfilled, reducers.toggleFavouriteSuccessReducer)
+      .addMatcher(isAnyOf(...getActions('pending')), reducers.pendingReducer)
+      .addMatcher(isAnyOf(...getActions('rejected')), reducers.rejectedReducer)
+      .addMatcher(isAnyOf(...getActions('fulfilled')), reducers.fulfilledReducer),
 });
 
 export const contactsReducer = contactsSlice.reducer;
