@@ -1,5 +1,4 @@
 import { Category, CategoryTag } from './ContactList.styled';
-
 import PaginatedContacts from 'components/PaginatedContacts';
 
 const ContactList = () => {

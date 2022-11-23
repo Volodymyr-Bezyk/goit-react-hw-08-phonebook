@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+
 import Box from 'components/Box';
-import { Contact } from 'components/ContactList/ContactList.styled';
 import ContactListRow from 'components/ContactListRow';
+import { Contact } from 'components/ContactList/ContactList.styled';
 import { StyledPaginatedContacts } from './PaginatedContacts.styled';
-import {
-  selectVisibleContacts,
-  selectActiveStatus,
-  selectFilter,
-  selectError,
-} from 'redux/selectors';
 import Error from 'components/Error';
+import { selectors } from 'redux/index';
 
 const PaginatedContacts = () => {
-  const filteredContacts = useSelector(selectVisibleContacts);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const status = useSelector(selectActiveStatus);
-  const filter = useSelector(selectFilter);
-  const error = useSelector(selectError);
+  const filteredContacts = useSelector(selectors.selectVisibleContacts);
+  const status = useSelector(selectors.selectActiveStatus);
+  const filter = useSelector(selectors.selectFilter);
+  const error = useSelector(selectors.selectError);
 
   useEffect(() => {
     setItemOffset(0);

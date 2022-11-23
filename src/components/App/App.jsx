@@ -14,10 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const promise = dispatch(operations.fetchContacts());
-    return () => {
-      promise.abort();
-    };
+    dispatch(operations.fetchContacts());
   }, [dispatch]);
 
   return (

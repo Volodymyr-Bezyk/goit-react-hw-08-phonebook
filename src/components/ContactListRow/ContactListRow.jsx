@@ -1,15 +1,16 @@
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Info, InfoBtn } from './ContactListRow.styled';
-import { deleteContact, toggleFavourite } from 'redux/operations';
+
 import Checkbox from 'components/Checkbox';
+import { Info, InfoBtn } from './ContactListRow.styled';
+import { operations } from 'redux/index';
 
 const ContactListRow = ({ contact }) => {
   const { name, number, email, id, status } = contact;
   const dispatch = useDispatch();
-  const onDeleteClick = () => dispatch(deleteContact(id));
-  const onToggleClick = () => dispatch(toggleFavourite(contact));
+  const onDeleteClick = () => dispatch(operations.deleteContact(id));
+  const onToggleClick = () => dispatch(operations.toggleFavourite(contact));
 
   return (
     <>

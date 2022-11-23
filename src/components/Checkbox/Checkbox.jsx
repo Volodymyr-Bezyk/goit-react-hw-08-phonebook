@@ -1,4 +1,5 @@
 import { FiStar } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 import { CheckboxLabel, HideInput } from './Checkbox.styled';
 
 const CheckBox = ({ onToggleClick, status }) => {
@@ -11,3 +12,7 @@ const CheckBox = ({ onToggleClick, status }) => {
 };
 
 export default CheckBox;
+
+CheckBox.propTypes = {
+  onToggleClick: PropTypes.func.isRequired,
+};

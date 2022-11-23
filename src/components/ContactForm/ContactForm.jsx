@@ -15,7 +15,6 @@ const ContactForm = () => {
 
   const checkDuplicate = ({ name: newName }) =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());
-
   const onFormSubmit = (contact, { resetForm }) => {
     const isContactAlreadyExist = checkDuplicate(contact);
 
@@ -29,7 +28,6 @@ const ContactForm = () => {
       number: phoneNumberFormatter(contact.number),
     };
     dispatch(operations.addContact(formattedContact));
-
     resetForm();
   };
 

@@ -1,21 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { BarLoader } from 'react-spinners';
-import { AppBarWrap, FilterBtn, InfoText } from './AppBar.styled';
+
+import { selectors } from 'redux/index';
 import { filterStatus } from 'redux/constants';
-import {
-  selectActiveStatus,
-  selectError,
-  selectLoadingStatus,
-} from 'redux/selectors';
 import { setActiveStatusValue } from 'redux/activeStatusSlice';
-import { selectCountedContacts } from 'redux/selectors';
+import { AppBarWrap, FilterBtn, InfoText } from './AppBar.styled';
 
 const AppBar = () => {
-  const currentStatus = useSelector(selectActiveStatus);
   const dispatch = useDispatch();
-  const counter = useSelector(selectCountedContacts);
-  const isloading = useSelector(selectLoadingStatus);
-  const error = useSelector(selectError);
+
+  const currentStatus = useSelector(selectors.selectActiveStatus);
+  const counter = useSelector(selectors.selectCountedContacts);
+  const isloading = useSelector(selectors.selectLoadingStatus);
+  const error = useSelector(selectors.selectError);
 
   return (
     <AppBarWrap>
