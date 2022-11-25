@@ -20,6 +20,7 @@ const PaginatedContacts = () => {
   useEffect(() => {
     setItemOffset(0);
     setCurrentPage(0);
+    console.log('render');
   }, [status, filter]);
 
   const itemsPerPage = 20;

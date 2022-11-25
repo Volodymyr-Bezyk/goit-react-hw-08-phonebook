@@ -12,7 +12,6 @@ import { operations } from 'redux/index';
 
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(operations.fetchContacts());
   }, [dispatch]);
