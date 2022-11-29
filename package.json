@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Volodymyr-Bezyk.github.io/goit-react-hw-07-phonebook/",
+  "homepage": "https://Volodymyr-Bezyk.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.9.0",
@@ -19,6 +19,7 @@
     "react-icons": "^4.4.0",
     "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.6",
     "redux": "^4.2.0",

@@ -15,6 +15,7 @@ const ContactForm = () => {
 
   const checkDuplicate = ({ name: newName }) =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());
+
   const onFormSubmit = (contact, { resetForm }) => {
     const isContactAlreadyExist = checkDuplicate(contact);
 

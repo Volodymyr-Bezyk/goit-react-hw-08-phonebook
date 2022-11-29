@@ -4,7 +4,7 @@ export const Label = styled.label`
   display: block;
   margin-bottom: ${p => p.theme.space[2]}px;
   color: ${p => p.theme.colors.text};
-  font-size: ${p => p.theme.space[3]}px;
+  font-size: ${p => p.theme.sizes[3]}px;
 `;
 
 export const Title = styled.p`

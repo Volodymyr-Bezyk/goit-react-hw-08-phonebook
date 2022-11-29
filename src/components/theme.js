@@ -10,6 +10,7 @@ const theme = {
     paginationBg: '#A6F5F6',
     additionalPagColor: '#75B8F7',
     disabled: '#B4B5B6',
+    navBg: '#273746 ',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

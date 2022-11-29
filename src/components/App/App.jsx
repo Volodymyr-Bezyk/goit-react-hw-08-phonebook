@@ -1,33 +1,24 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
-
-import { Wrapper } from './App.styled';
-import ContactForm from 'components/ContactForm';
-import ContactList from 'components/ContactList';
-import Filter from 'components/Filter';
-import AppBar from 'components/AppBar';
-import Box from 'components/Box';
-import { operations } from 'redux/index';
+import { Routes, Route } from 'react-router-dom';
+import Layout from 'components/Layout';
+import Home from 'pages/Home';
+import Contacts from 'pages/Contacts';
+import Register from 'pages/Register';
+import Login from 'pages/Login';
+import NotFound from 'pages/NotFound';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(operations.fetchContacts());
-  }, [dispatch]);
-
   return (
-    <Wrapper>
-      <Box minWidth="15%" maxWidth="25%" p={4}>
-        <ContactForm />
-        <Filter />
-      </Box>
-      <Toaster position="top-right" reverseOrder={false} />
-      <Box width="70%" p={4} maxWidth={1200}>
-        <AppBar />
-        <ContactList />
-      </Box>
-    </Wrapper>
+    <div>
+      <Routes>
+        <Route path="/" end element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="contacts" element={<Contacts />}></Route>
+          <Route path="register" element={<Register />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Route>
+      </Routes>
+    </div>
   );
 };
 
