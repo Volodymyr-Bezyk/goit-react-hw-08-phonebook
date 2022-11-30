@@ -11,10 +11,10 @@ import { register } from 'redux/auth/operations';
 const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const onFormSubmit = (credentials, data) => {
-    // console.log(credentials);
-    // console.log(data);
+  const onFormSubmit = (credentials, { setSubmitting, resetForm }) => {
     dispatch(register(credentials));
+    setSubmitting(false);
+    resetForm();
   };
 
   return (
@@ -24,16 +24,20 @@ const RegisterForm = () => {
         onSubmit={onFormSubmit}
         validationSchema={validationRegisterSchema}
       >
-        <Form>
-          <Title>
-            <TitleText>Plese fill up registration form</TitleText>
-            <SiGnuprivacyguard size={40} display="inline-block" ml={20} />
-          </Title>
-          <FieldInput title="Name" type="text" name="name" />
-          <FieldInput title="Email" type="mail" name="email" />
-          <FieldInput title="Password" type="password" name="password" />
-          <RegisterBtn type="submit">Send</RegisterBtn>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <Title>
+              <TitleText>Plese fill up registration form</TitleText>
+              <SiGnuprivacyguard size={40} display="inline-block" ml={20} />
+            </Title>
+            <FieldInput title="Name" type="text" name="name" />
+            <FieldInput title="Email" type="mail" name="email" />
+            <FieldInput title="Password" type="password" name="password" />
+            <RegisterBtn disabled={isSubmitting} type="submit">
+              Send
+            </RegisterBtn>
+          </Form>
+        )}
       </Formik>
     </Box>
   );

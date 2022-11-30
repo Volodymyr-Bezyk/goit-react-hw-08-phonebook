@@ -13,14 +13,14 @@ const PaginatedContacts = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const filteredContacts = useSelector(selectors.selectVisibleContacts);
-  const status = useSelector(selectors.selectActiveStatus);
+
   const filter = useSelector(selectors.selectFilter);
   const error = useSelector(selectors.selectError);
 
   useEffect(() => {
     setItemOffset(0);
     setCurrentPage(0);
-  }, [status, filter]);
+  }, [filter]);
 
   const itemsPerPage = 20;
   const endOffset = itemOffset + itemsPerPage;

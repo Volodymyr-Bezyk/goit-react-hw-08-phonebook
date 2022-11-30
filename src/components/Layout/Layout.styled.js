@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
 export const Navigation = styled.nav`
   display: flex;
   justify-content: space-evenly;
+
   background-color: ${p => p.theme.colors.navBg};
   padding: ${p => p.theme.space[1]}px;
 `;

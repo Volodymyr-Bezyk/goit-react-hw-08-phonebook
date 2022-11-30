@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import lazy from 'react';
+// import lazy from 'react';
 import { PrivateRoute, RestrictedRoute } from 'routes';
 import Layout from 'components/Layout';
 

@@ -7,7 +7,6 @@ const ContactList = () => {
       <Category>
         <CategoryTag>Name</CategoryTag>
         <CategoryTag>Phone</CategoryTag>
-        <CategoryTag>Email</CategoryTag>
         <CategoryTag>Delete</CategoryTag>
       </Category>
 

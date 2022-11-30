@@ -19,9 +19,10 @@ export const StyledPaginatedContacts = styled(ReactPaginate)`
     display: inline-block;
     font-family: inherit;
     border-radius: ${p => p.theme.radii.max};
-    padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
+    padding: ${p => p.theme.space[1]}px ${p => p.theme.space[1]}px;
     border: 1px solid ${p => p.theme.colors.paginationBg};
     background-color: ${p => p.theme.colors.paginationBg};
+    font-size: ${p => p.theme.fontSizes[1]}px;
     cursor: pointer;
     transition: background-color 250ms ease-in;
 

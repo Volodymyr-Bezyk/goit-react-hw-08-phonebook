@@ -5,7 +5,6 @@ import { Toaster } from 'react-hot-toast';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
-import AppBar from 'components/AppBar';
 import Box from 'components/Box';
 import { operations } from 'redux/index';
 
@@ -23,7 +22,6 @@ const Contacts = () => {
       </Box>
       <Toaster position="top-right" reverseOrder={false} />
       <Box width="70%" p={4} maxWidth={1200}>
-        <AppBar />
         <ContactList />
       </Box>
     </Box>

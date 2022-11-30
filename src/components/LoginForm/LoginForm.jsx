@@ -11,10 +11,10 @@ import { login } from 'redux/auth/operations';
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const onFormSubmit = (credentials, data) => {
+  const onFormSubmit = (credentials, { setSubmitting, resetForm }) => {
     dispatch(login(credentials));
-    // console.log(credentials);
-    // console.log(data);
+    setSubmitting(false);
+    resetForm();
   };
 
   return (
@@ -24,15 +24,19 @@ const LoginForm = () => {
         onSubmit={onFormSubmit}
         validationSchema={validationLoginSchema}
       >
-        <Form>
-          <Title>
-            <TitleText>Plese fill up to login</TitleText>
-            <CgLogIn size={40} display="inline-block" ml={20} />
-          </Title>
-          <FieldInput title="Email" type="mail" name="email" />
-          <FieldInput title="Password" type="password" name="password" />
-          <LoginBtn type="submit">Login</LoginBtn>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <Title>
+              <TitleText>Plese fill up to login</TitleText>
+              <CgLogIn size={40} display="inline-block" ml={20} />
+            </Title>
+            <FieldInput title="Email" type="mail" name="email" />
+            <FieldInput title="Password" type="password" name="password" />
+            <LoginBtn disabled={isSubmitting} type="submit">
+              Login
+            </LoginBtn>
+          </Form>
+        )}
       </Formik>
     </Box>
   );
