@@ -12,9 +12,7 @@ export const deleteContactSuccessReducer = (state, action) => {
 };
 
 export const toggleFavouriteSuccessReducer = (state, action) => {
-  const index = state.items.findIndex(
-    contact => contact.id === action.payload.id
-  );
+  const index = state.items.findIndex(contact => contact.id === action.payload.id);
   state.items.splice(index, 1, action.payload);
 };
 

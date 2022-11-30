@@ -45,7 +45,7 @@ const ContactForm = () => {
         </Title>
         <FieldInput title="Name" type="text" name="name" />
         <FieldInput title="Phone" type="tel" name="number" />
-        <FieldInput title="Email" type="mail" name="email" />
+
         <AddBtn type="submit">Add contact</AddBtn>
       </Form>
     </Formik>
