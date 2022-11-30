@@ -2,7 +2,7 @@ import 'react-clock/dist/Clock.css';
 import Clock from 'react-clock';
 
 import { useEffect, useState } from 'react';
-import { Wrap, DateWrap, WatchWrap } from './Watch.styled';
+import { Wrap, WatchWrap } from './Watch.styled';
 
 const Watch = () => {
   const [time, setTime] = useState(new Date());
