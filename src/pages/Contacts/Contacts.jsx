@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
 
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
@@ -20,7 +19,7 @@ const Contacts = () => {
         <ContactForm />
         <Filter />
       </Box>
-      <Toaster position="top-right" reverseOrder={false} />
+
       <Box width="70%" p={4} maxWidth={1200}>
         <ContactList />
       </Box>

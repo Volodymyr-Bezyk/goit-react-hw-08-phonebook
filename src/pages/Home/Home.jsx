@@ -1,5 +1,7 @@
+import Watch from 'components/Watch/Watch';
+
 const Home = () => {
-  return <div>Home</div>;
+  return <Watch />;
 };
 
 export default Home;

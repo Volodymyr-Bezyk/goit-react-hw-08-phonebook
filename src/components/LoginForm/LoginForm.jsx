@@ -14,7 +14,7 @@ const LoginForm = () => {
   const onFormSubmit = (credentials, { setSubmitting, resetForm }) => {
     dispatch(login(credentials));
     setSubmitting(false);
-    resetForm();
+    // resetForm();
   };
 
   return (

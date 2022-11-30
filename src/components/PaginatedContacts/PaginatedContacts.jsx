@@ -45,7 +45,7 @@ const PaginatedContacts = () => {
           ))}
         </Box>
       )}
-      {!error && currentItems.length > 0 && (
+      {!error && currentItems.length > 20 && (
         <StyledPaginatedContacts
           breakLabel="..."
           nextLabel=">>"

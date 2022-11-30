@@ -9,6 +9,7 @@ import { selectLoadingStatus } from 'redux/selectors';
 
 import UserMenu from 'components/UserMenu';
 import { Wrapper, Navigation, Link } from './Layout.styled';
+import { Toaster } from 'react-hot-toast';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Layout = () => {
 
   return (
     <Wrapper>
+      <Toaster position="top-right" reverseOrder={false} />
       <header>
         <Navigation>
           <div>

@@ -11,6 +11,7 @@ const theme = {
     additionalPagColor: '#75B8F7',
     disabled: '#B4B5B6',
     navBg: '#273746 ',
+    homeBg: 'rgba(231, 139, 104, 0.5)',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

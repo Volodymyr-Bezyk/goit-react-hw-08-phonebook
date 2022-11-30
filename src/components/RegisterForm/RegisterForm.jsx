@@ -14,7 +14,7 @@ const RegisterForm = () => {
   const onFormSubmit = (credentials, { setSubmitting, resetForm }) => {
     dispatch(register(credentials));
     setSubmitting(false);
-    resetForm();
+    // resetForm();
   };
 
   return (
